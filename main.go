@@ -13,7 +13,7 @@ import (
 	jp "github.com/dustin/go-jsonpointer"
 )
 
-var Usage = func() {
+func usage() {
 	fmt.Fprintf(os.Stderr, "Usage of %s:\n", os.Args[0])
 	fmt.Fprintf(os.Stderr, "  %s [-pretty] QUERY.. <FILE\n", os.Args[0])
 	fmt.Fprintf(os.Stderr, "  %s -list <FILE\n", os.Args[0])
@@ -28,7 +28,7 @@ func main() {
 	log.SetFlags(0)
 	log.SetPrefix(prog + ": ")
 
-	flag.Usage = Usage
+	flag.Usage = usage
 	flag.Parse()
 
 	var all_matched = true
@@ -38,7 +38,7 @@ func main() {
 	switch {
 
 	case flag.NArg() == 0 && !*list:
-		Usage()
+		usage()
 
 	case *list && flag.NArg() > 0:
 		log.Fatal("cannot combine -list with query")
