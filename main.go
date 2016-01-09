@@ -5,11 +5,12 @@ import (
 	"encoding/json"
 	"flag"
 	"fmt"
-	jp "github.com/dustin/go-jsonpointer"
 	"io"
 	"log"
 	"os"
 	"path"
+
+	jp "github.com/dustin/go-jsonpointer"
 )
 
 var Usage = func() {
